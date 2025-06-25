@@ -1,42 +1,39 @@
+/* =====================
+    TEEMAMUUTTUJAT
+   ===================== */
 :root {
   /* Black */
   --black-dark: #0A0A0A;
   --black-mid: #262626;
   --black-light: #3A3A3A;
-
   /* Gray */
   --gray-dark: #747474;
   --gray-mid: #AEAEAE;
   --gray-light: #E8E8E8;
-
   /* Orange */
   --orange-darkest: #451805;
   --orange-darker: #682408;
   --orange-dark: #8A300A;
-  --orange-mid: #F06C35;
-  --orange-light: #F59D78;
-
+  --orange-mid: #E94F11;
+  --orange-light: #F06C35;
   /* Red */
   --red-dark: #7D0B07;
   --red-mid: #A60F09;
   --red-light: #F54740;
-
   /* Green */
-  --green-dark: #313927;
-  --green-mid: #62714F;
+  --green-darkest: #313927;
+  --green-darker: #465038;
+  --green-dark: #62714F;
+  --green-mid: #677552;
   --green-light: #A2B08F;
-
   /* Blue */
   --blue-dark: #20282C;
   --blue-mid: #405059;
   --blue-light: #8299A5;
-
   /* Sand */
-  --sand-dark: #766452;
-  --sand-mid: #A99683;
-  --sand-light: #D2C8BE;
-
-
+  --sand-dark: #D2C8BE;
+  --sand-mid: #E4DED8;
+  --sand-light: #F6F4F2;
 }
 
 .dark-theme {
@@ -55,16 +52,19 @@
 .light-theme {
   --color-bg: var(--gray-light);
   --color-bg-alt: var(--sand-light);
-  --color-primary: var(--green-mid);
-  --color-primary-dark: var(--green-dark);
+  --color-primary: var(--orange-dark);
+  --color-primary-dark: var(--orange-mid);
   --color-accent: var(--orange-mid);
   --color-text: var(--black-dark);
   --color-titlebar: var(--sand-light);
   --color-titlebar-text: var(--black-dark);
-  --focus-border: #000;
+  --focus-border: var(--orange-mid);
   --focus-shadow: #fff;
 }
 
+/* =====================
+    YLEISET ELEMENTIT
+   ===================== */
 body {
   background: var(--color-bg);
   font-family: 'Open Sans', Arial, Helvetica, sans-serif;
@@ -81,6 +81,21 @@ body {
   background: var(--color-bg-alt);
 }
 
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+  font-weight: 700;
+}
+
+.main-title {
+  text-align: center;
+  margin-top: 24px;
+  margin-bottom: 16px;
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+  font-size: 2.2rem;
+  color: var(--color-primary);
+  letter-spacing: 1px;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -92,8 +107,12 @@ body {
   }
 }
 
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
 .App-header {
-  
   flex: 1 1 auto;
   display: flex;
   flex-direction: column;
@@ -105,40 +124,22 @@ body {
   overflow: auto;
 }
 
-.App-link {
-  color: #61dafb;
-}
+.App-link { color: #61dafb; }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
-  font-weight: 700;
-}
-
-/* Flex-kontti */
+/* =====================
+   LAYOUT JA KONTIT
+   ===================== */
 .generator-container {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: flex-start;
-  padding: 48px 0 0 0;
+  padding: 24px 40px 40px 40px;
   max-width: 900px;
-  margin: 0 auto;
+  margin: 24px auto 0 auto;
   width: 100%;
   border-radius: 18px;
   box-shadow: 0 4px 32px rgba(0,0,0,0.12);
-  padding: 48px 40px 40px 40px;
-  max-width: 900px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .generator-left {
@@ -147,7 +148,6 @@ h1, h2, h3, h4, h5, h6 {
   gap: 1.3rem;
   min-width: 250px;
   align-items: flex-start;
-  
   color: var(--color-text);
 }
 
@@ -162,6 +162,31 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--color-text);
 }
 
+.generator-left-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.7em;
+  color: var(--color-primary);
+  letter-spacing: 0.5px;
+}
+
+.generator-left label {
+  font-size: 1.15rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.7em;
+}
+
+input[type="checkbox"] {
+  width: 1.2em;
+  height: 1.2em;
+  accent-color: var(--color-primary);
+}
+
+/* =====================
+   SALASANAN PITUUS & LIUKUSÄÄDIN
+   ===================== */
 .length-controls {
   display: flex;
   flex-direction: column;
@@ -170,32 +195,13 @@ h1, h2, h3, h4, h5, h6 {
   gap: 0.5rem;
 }
 
-.length-label {
+.length-title {
   font-size: 1.5rem;
   font-weight: 600;
-  margin-bottom: 0.2em;
-  color: var(--color-text);
-  align-self: flex-start;
-}
-
-.length-inputs {
-  display: flex;
-  align-items: center;
-  gap: 1em;
-}
-
-.length-btn {
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
+  margin-bottom: 0.7em;
   color: var(--color-primary);
-  display: flex;
-  align-items: center;
-  transition: color 0.2s;
-}
-.length-btn:hover {
-  color: var(--color-primary-dark);
+  letter-spacing: 0.5px;
+  align-self: flex-start;
 }
 
 .length-number {
@@ -222,8 +228,71 @@ h1, h2, h3, h4, h5, h6 {
   accent-color: var(--color-primary);
 }
 
+.length-inputs {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+
+.length-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  transition: color 0.2s;
+}
+.length-btn:hover {
+  color: var(--color-primary-dark);
+}
+
+/* =====================
+   SALLITUT ERIKOISMERKIT
+   ===================== */
+.symbols-input {
+  margin-top: 0.1rem;
+  width: 100%;
+}
+
+.symbols-input input {
+  background: transparent;
+  color: var(--color-primary);
+  border: none;
+  border-radius: 4px;
+  font-size: 1.4rem;
+  height: 48px;
+  text-align: center;
+  transition: border 0.2s;
+  width: 100%;
+  max-width: 320px;
+  box-sizing: border-box;
+}
+
+.symbols-preview {
+  margin-top: 0.5em;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4em;
+}
+
+.symbols-preview .symbol-bubble {
+  display: inline-block;
+  padding: 0.1em;
+  background: none;
+  color: var(--color-primary);
+  border-radius: 4px;
+  font-size: 1.5em;
+  font-weight: 700;
+  min-width: unset;
+  text-align: center;
+}
+
+/* =====================
+   GENEROITU SALASANA & KOPIOINTI
+   ===================== */
 .password-output {
-  
   font-size: 1.2rem;
   margin-bottom: 2rem;
   width: 100%;
@@ -249,216 +318,16 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: 0.5rem;
   font-size: 2.2rem;
   word-break: break-all;
-  
   border-radius: 6px;
   color: var(--color-primary);
   text-align: center;
   box-sizing: border-box;
-}
-
-.generate-btn {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  padding: 0.7rem 2rem;
-  font-size: 1.1rem;
-  background: var(--color-primary);
-  color: var(--color-text);
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: 600;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  transition: background 0.2s;
-}
-.generate-btn:hover {
-  background: var(--color-primary-dark);
-}
-
-
-
-.symbols-input input {
-  background: transparent;
-  color: var(--color-primary);
-  border: none;
-  border-radius: 4px;
-  ;
-  font-size: 1.5rem;
-  height: 48px;
-  text-align: center;
-  transition: border 0.2s;
-  width: 100%;
-  max-width: 320px;
-  box-sizing: border-box;
-}
-
-.symbols-input input:focus {
-  outline: none;
-  border: 2px solid var(--focus-border);
-  box-shadow: 0 0 0 3px var(--focus-shadow);
-}
-
-.symbols-preview {
-  margin-top: 0.5em;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4em;
-}
-
-.symbols-preview .symbol-bubble {
-  display: inline-block;
-  padding: 0.1em 0.3em;
-  background: none;
-  color: var(--color-primary);
-  border-radius: 4px;
-  font-size: 1.5em;
-  font-weight: 700;
-  min-width: unset;
-  text-align: center;
-}
-
-.main-title {
-  text-align: center;
-  margin-top: 24px;
-  margin-bottom: 16px;
-  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
-  font-size: 2.2rem;
-  color: var(--color-primary);
-  letter-spacing: 1px;
-}
-
-.generator-left label {
-  font-size: 1.15rem;
-  margin-bottom: 1rem;
-  display: flex;
-  align-items: center;
-  gap: 0.7em;
-}
-
-input[type="checkbox"] {
-  width: 1.2em;
-  height: 1.2em;
-  accent-color: var(--color-primary);
-}
-
-.generator-left-title {
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin-bottom: 0.7em;
-  color: var(--color-primary);
-  letter-spacing: 0.5px;
-}
-
-.length-title {
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin-bottom: 0.7em;
-  color: var(--color-primary);
-  letter-spacing: 0.5px;
-  align-self: flex-start;
-}
-
-/* Poista oletustyylit */
-input[type="range"] {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 140px;
-  height: 24px;
-  background: transparent;
-  accent-color: unset; /* Poista accent-color, jos haluat täysin custom-tyylin */
-  -webkit-app-region: no-drag;
-}
-
-/* Rata (track) liukusäätimen */
-input[type="range"]::-webkit-slider-runnable-track {
-  height: 8px;
-  background: var(--color-primary);
-  border-radius: 0; /* Kulmikas */
-  box-shadow: none;
-}
-input[type="range"]::-moz-range-track {
-  height: 8px;
-  background: var(--color-primary);
-  border-radius: 0;
-}
-input[type="range"]::-ms-fill-lower,
-input[type="range"]::-ms-fill-upper {
-  background: var(--color-primary);
-  border-radius: 0;
-}
-
-/* Nuppi (thumb) liukusäätimen */
-input[type="range"]::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 24px;
-  height: 24px;
-  background: var(--color-primary-dark);
-  border: 2px solid var(--color-bg);
-  border-radius: 0; /* Neliö! */
-  cursor: pointer;
-  transition: background 0.2s, border 0.2s;
-  margin-top: -8px; /* keskittää nupin radalle */
-}
-input[type="range"]:focus::-webkit-slider-thumb {
-  outline: 2px solid var(--color-accent);
-}
-
-input[type="range"]::-moz-range-thumb {
-  width: 24px;
-  height: 24px;
-  background: var(--color-primary-dark);
-  border: 2px solid var(--color-bg);
-  border-radius: 0;
-  cursor: pointer;
-  transition: background 0.2s, border 0.2s;
-}
-input[type="range"]:focus::-moz-range-thumb {
-  outline: 2px solid var(--color-accent);
-}
-
-input[type="range"]::-ms-thumb {
-  width: 24px;
-  height: 24px;
-  background: var(--color-primary-dark);
-  border: 2px solid var(--color-bg);
-  border-radius: 0;
-  cursor: pointer;
-  transition: background 0.2s, border 0.2s;
-}
-
-/* Poista IE/Edge oletustausta */
-input[type="range"] {
-  background: transparent;
-}
-
-/* Firefoxin erikoisvaatimus */
-input[type="range"] {
-  -webkit-appearance: none;
-  appearance: none;
-  height: 8px;
-}
-
-/* Copy-nappi */
-.copy-btn {
-  background: var(--color-primary);
-  color: var(--color-text);
-  border: none;
-  border-radius: 6px;
-  padding: 0.4em 1em;
-  font-size: 1rem;
-  cursor: pointer;
-  font-weight: 600;
-  transition: background 0.2s;
-}
-.copy-btn:hover {
-  background: var(--color-primary-dark);
 }
 
 .copy-btn-inside {
   width: 36px;
   height: 36px;
-  background: var(--color-primary);
+  background: var(--color-primary-dark);
   color: var(--color-text);
   border: none;
   border-radius: 4px;
@@ -475,9 +344,115 @@ input[type="range"] {
   margin-top: 12px;
 }
 .copy-btn-inside:hover {
-  background: var(--color-primary-dark);
+  background: var(--color-primary);
 }
 
+.generate-btn {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  padding: 0.7rem 2rem;
+  font-size: 1.1rem;
+  background: var(--color-primary-dark);
+  color: var(--color-text);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  transition: background 0.2s;
+}
+.generate-btn:hover {
+  background: var(--color-primary);
+}
+
+button, .generate-btn, .copy-btn, .length-btn {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.1s;
+}
+button:hover, .generate-btn:hover, .copy-btn:hover, .length-btn:hover {
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.16);
+}
+
+/* =====================
+   LIUKUSÄÄDIN (RANGE INPUT)
+   ===================== */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 160px;
+  height: 24px;
+  background: transparent;
+  accent-color: unset;
+  -webkit-app-region: no-drag;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 8px;
+  background: var(--color-primary);
+  border-radius: 0;
+  box-shadow: none;
+}
+input[type="range"]::-moz-range-track {
+  height: 8px;
+  background: var(--color-primary);
+  border-radius: 0;
+}
+input[type="range"]::-ms-fill-lower,
+input[type="range"]::-ms-fill-upper {
+  background: var(--color-primary);
+  border-radius: 0;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  background: var(--color-primary-dark);
+  border: 2px solid var(--color-bg);
+  border-radius: 0;
+  cursor: pointer;
+  transition: background 0.2s, border 0.2s;
+  margin-top: -8px;
+}
+input[type="range"]:focus::-webkit-slider-thumb {
+  outline: 2px solid var(--color-accent);
+}
+input[type="range"]::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  background: var(--color-primary-dark);
+  border: 2px solid var(--color-bg);
+  border-radius: 0;
+  cursor: pointer;
+  transition: background 0.2s, border 0.2s;
+}
+input[type="range"]:focus::-moz-range-thumb {
+  outline: 2px solid var(--color-accent);
+}
+input[type="range"]::-ms-thumb {
+  width: 24px;
+  height: 24px;
+  background: var(--color-primary-dark);
+  border: 2px solid var(--color-bg);
+  border-radius: 0;
+  cursor: pointer;
+  transition: background 0.2s, border 0.2s;
+}
+input[type="range"] {
+  background: transparent;
+}
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 8px;
+}
+
+/* =====================
+   MUUT YLEISET
+   ===================== */
 button, .generate-btn, .copy-btn, .length-btn {
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.1s;
@@ -490,12 +465,22 @@ button:hover, .generate-btn:hover, .copy-btn:hover, .length-btn:hover {
 .dark-theme, .dark-theme body, .dark-theme .App {
   background: radial-gradient(
     ellipse at bottom,
-    
     var(--orange-dark) 0%,
     var(--orange-darker) 20%,
     var(--orange-darkest) 40%,
-    
     var(--black-dark) 100%
+  );
+  min-height: 100vh;
+}
+
+.light-theme,
+.light-theme body,
+.light-theme .App {
+  background: radial-gradient(
+    ellipse at bottom,
+    var(--sand-dark) 0%,
+    var(--sand-mid) 60%,
+    var(--sand-dark) 100%
   );
   min-height: 100vh;
 }
@@ -511,6 +496,14 @@ input[type="number"]::-webkit-outer-spin-button {
 input[type="number"] {
   -moz-appearance: textfield;
   appearance: textfield;
+}
+
+.input-hint {
+  font-size: 0.95rem;
+  color: var(--color-text);
+  margin-top: 0.2em;
+  margin-bottom: 0.5em;
+  text-align: center;
 }
 
 

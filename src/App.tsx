@@ -6,6 +6,7 @@ import { SquarePlus, SquareMinus, Copy } from 'lucide-react';
 
 function App() {
   const [length, setLength] = useState(12);
+  const [inputValue, setInputValue] = useState('12');
   const [useUpper, setUseUpper] = useState(true);
   const [useLower, setUseLower] = useState(true);
   const [useNumbers, setUseNumbers] = useState(true);
@@ -22,6 +23,31 @@ function App() {
   const toggleTheme = () => {
     setTheme(theme === 'dark' ? 'light' : 'dark');
   };
+
+  // --- Salasanan pituuden syötteen käsittely ---
+  const handleLengthInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValue(e.target.value.replace(/[^0-9]/g, ''));
+  };
+
+  const commitLengthInput = () => {
+    let num = parseInt(inputValue, 10);
+    if (isNaN(num)) num = 8;
+    if (num < 8) num = 8;
+    if (num > 40) num = 40;
+    setLength(num);
+    setInputValue(num.toString());
+  };
+
+  const handleLengthInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      commitLengthInput();
+      (e.target as HTMLInputElement).blur();
+    }
+  };
+
+  React.useEffect(() => {
+    setInputValue(length.toString());
+  }, [length]);
 
   return (
     <div className={`App ${theme}-theme`}>
@@ -69,7 +95,7 @@ function App() {
                 type="text"
                 value={symbols}
                 onChange={e => setSymbols(e.target.value)}
-                style={{width: '150px' }}
+                style={{width: '200px' }}
               />
             </label>
             <div className="symbols-preview">
@@ -86,10 +112,13 @@ function App() {
               type="number"
               min="8"
               max="40"
-              value={length}
-              onChange={e => setLength(Math.max(8, Math.min(40, Number(e.target.value))))}
+              value={inputValue}
+              onChange={handleLengthInputChange}
+              onBlur={commitLengthInput}
+              onKeyDown={handleLengthInputKeyDown}
               className="length-number"
             />
+            <div className="input-hint">Sallittu pituus: 8–40 merkkiä</div>
             <div className="length-inputs">
               <button
                 className="length-btn"

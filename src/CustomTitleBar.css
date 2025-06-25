@@ -43,10 +43,6 @@
     background: var(--color-accent);
 }
 
-.title-bar-btn.theme-toggle:hover {
-    color: var(--color-primary);
-}
-
 .title-bar-btn.close:hover {
     background: var(--red-mid);
     color: #fff;
