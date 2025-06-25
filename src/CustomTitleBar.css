@@ -1,0 +1,53 @@
+.title-bar {
+    width: 100%;
+    height: 48px;
+    background: transparent;
+    color: var(--color-titlebar-text);
+    display: flex;
+    align-items: center;
+    padding-left: 16px;
+    -webkit-app-region: drag;
+    user-select: none;
+    font-size: 16px;
+    font-weight: 500;
+    box-sizing: border-box;
+}
+
+.title-bar-title {
+    flex: 1;
+}
+
+.title-bar-controls {
+    display: flex;
+    align-items: center;
+    -webkit-app-region: no-drag;
+}
+
+.title-bar-btn {
+    background: none;
+    border: none;
+    color: var(--color-titlebar-text);
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    cursor: pointer;
+    border-radius: 6px;
+    margin-right: 4px;
+    transition: background 0.2s, color 0.2s;
+}
+
+.title-bar-btn:hover {
+    background: var(--color-accent);
+}
+
+.title-bar-btn.theme-toggle:hover {
+    color: var(--color-primary);
+}
+
+.title-bar-btn.close:hover {
+    background: var(--red-mid);
+    color: #fff;
+} 
