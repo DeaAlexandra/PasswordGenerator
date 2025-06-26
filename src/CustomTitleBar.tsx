@@ -10,6 +10,7 @@ interface CustomTitleBarProps {
 const CustomTitleBar: React.FC<CustomTitleBarProps> = ({ theme, toggleTheme }) => {
   return (
     <div className="title-bar">
+      <img src="/Logo SG.png" alt="Logo" className="title-bar-logo" />
       <span className="title-bar-title"></span>
       <div className="title-bar-controls">
         <button

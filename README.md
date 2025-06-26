@@ -1,46 +1,54 @@
-# Getting Started with Create React App
+# Salasanageneraattori
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Salasanageneraattori on Windowsille tehty tyylikäs ja helppokäyttöinen sovellus vahvojen salasanojen luomiseen. Sovellus on toteutettu Electronilla ja Reactilla.
 
-## Available Scripts
+## Ominaisuudet
 
-In the project directory, you can run:
+- Luo vahvoja salasanoja helposti
+- Valitse pituus (8–40 merkkiä)
+- Mukauta merkistö: isot ja pienet kirjaimet, numerot, erikoismerkit
+- Huomaa että voit itse määritellä mitä erikoismerkkejä haluat käyttää
+- Tumma ja vaalea teema
+- Moderni, responsiivinen käyttöliittymä
+- Kopioi salasana yhdellä napilla
 
-### `npm start`
+## Asennus ja käyttö
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+1. **Lataa asennuspaketti** (tai zip-tiedosto) ja pura se haluamaasi kansioon.
+2. Käynnistä sovellus tuplaklikkaamalla `Salasanageneraattori.exe`-tiedostoa.
+3. Sovellus ei vaadi asennusta eikä internet-yhteyttä.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+> **Huom:** Sovellus on testivaiheessa. Anna palautetta ja ilmoita mahdollisista bugeista!
 
-### `npm test`
+## Kehittäjälle
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Jos haluat ajaa sovellusta kehitystilassa:
 
-### `npm run build`
+1. Asenna riippuvuudet:
+   ```bash
+   npm install
+   ```
+2. Käynnistä React-kehityspalvelin:
+   ```bash
+   npm start
+   ```
+3. Käynnistä Electron:
+   ```bash
+   npm run electron
+   ```
+   (tai käytä omaa Electronin käynnistyskomentoasi)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Tiedostorakenne
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- `main.js` – Electronin pääprosessi
+- `preload.js` – Turvallinen silta käyttöliittymän ja Electronin välillä
+- `src/` – React-käyttöliittymä
+- `public/` – Staattiset tiedostot (mm. ikonit)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Kuvake
 
-### `npm run eject`
+Sovelluksen kuvake: `Logo SG.ico` (Windows)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Lisenssi
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Tämä projekti on lisensoitu MIT-lisenssillä – katso LICENSE-tiedosto.

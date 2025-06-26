@@ -24,7 +24,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "electron": "electron ."
+    "electron": "electron .",
+    "react-build": "react-scripts build",
+    "electron-pack": "electron-builder"
   },
   "eslintConfig": {
     "extends": [
@@ -45,7 +47,24 @@
     ]
   },
   "devDependencies": {
-    "electron": "^36.5.0"
+    "electron": "^36.5.0",
+    "electron-builder": "^26.0.12"
   },
-  "main": "main.js"
+  "main": "main.js",
+  "build": {
+    "appId": "com.omadomain.salasanageneraattori",
+    "productName": "Salasanageneraattori",
+    "icon": "Logo SG.ico",
+    "files": [
+      "build/**/*",
+      "main.js",
+      "preload.js",
+      "Logo SG.ico"
+    ],
+    "win": {
+      "icon": "Logo SG.ico",
+      "target": "nsis"
+    }
+  },
+  "license": "MIT"
 }

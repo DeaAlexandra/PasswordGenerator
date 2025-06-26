@@ -5,6 +5,7 @@ function createWindow () {
   const win = new BrowserWindow({
     width: 1200,
     height: 700,
+    icon: path.join(__dirname, 'Logo SG.ico'),
     frame: false,
     titleBarStyle: 'hidden',
     webPreferences: {
